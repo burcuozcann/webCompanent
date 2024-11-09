@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <app-card
+      imgSrc="coffee.jpg"
+      title="Article about coffee"
+      subtitle="Coffee is cool"
+      lightButtonText="Back"
+      darkButtonText="Forward"
+    >
+      <span slot="copy">
+        Lorem <b>ipsum</b> dolor sit amet, consectetur adipisicing elit.
+        Pariatur, officia fugiat. Nam fuga earum consequatur asperiores! Ad ipsa
+        non voluptate omnis, magnam dignissimos nisi, aspernatur harum molestiae
+        expedita quod provident!
+      </span>
+    </app-card>
+    <template id="app-card-template">
+      <style>
+        * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+        .button {
+          padding: 7px 15px;
+          border: 1px solid black;
+          border-radius: 4px;
+          background: none;
+          font-weight: bold;
+          font-size: 18px;
+        }
+        .button:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+        .button_light {
+          background-color: rgb(255, 248, 235);
+        }
+        .button_dark {
+          background-color: rgb(46, 46, 46);
+          color: rgb(255, 255, 255);
+        }
+        body {
+          padding: 50px;
+          display: flex;
+          flex-direction: column;
+          gap: 100px;
+        }
+        .card {
+          border: 1px solid rgba(114, 114, 114, 0.39);
+          padding: 30px;
+          border-radius: 7px;
+          box-shadow: 1px 1px 5px 2px rgba(114, 114, 114, 0.39);
+        }
+        .card__header {
+          display: flex;
+          justify-content: center;
+          padding-bottom: 10px;
+        }
+        .card__image {
+          border-radius: 20px;
+          height: 300px;
+          object-fit: contain;
+        }
+        .card__body {
+          font-family: Georgia, "Times New Roman", Times, serif;
+          font-size: 16px;
+        }
+        .card__title {
+          font-size: 22px;
+        }
+        .card__subtitle {
+          font-size: 14px;
+          color: rgb(157, 157, 157);
+          margin: 5px 0 7px;
+        }
+        .card__copy {
+          width: 100%;
+          line-height: 1.2em;
+          height: 3.6em;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+          line-clamp: 3;
+        }
+        .card__footer {
+          border-top: 1px solid rgba(114, 114, 114, 0.39);
+          margin-top: 15px;
+          padding-top: 10px;
+        }
+        .card__actions {
+          display: flex;
+          justify-content: space-between;
+        }
+        .card__button {
+          font-size: 14px;
+        }
+      </style>
+
+      <article class="card">
+        <div class="card__header">
+          <img class="card__image" src="" alt="" />
+        </div>
+        <div class="card__body">
+          <h2 class="card__title"></h2>
+          <h3 class="card__subtitle"></h3>
+          <p class="card__copy">
+            <slot name="copy">Default Text</slot>
+          </p>
+        </div>
+        <footer class="card__footer">
+          <div class="card__actions">
+            <button class="button button_light card__button"></button>
+            <button class="button button_dark card__button"></button>
+          </div>
+        </footer>
+      </article>
+    </template>
+  </body>
+</html>
